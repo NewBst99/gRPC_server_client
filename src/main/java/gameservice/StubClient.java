@@ -71,6 +71,7 @@ public class StubClient {
                 .setZloc(zloc)
                 .build();
         MapProgressResponse response = blockingStub.saveMapProgress(request);
+        System.out.println(response.getCheckmessage());
     }
 
     public void getItemRelation(int userid) {
@@ -94,6 +95,7 @@ public class StubClient {
                 .build();
 
         ItemRelationResponse response = blockingStub.saveItemRelation(request);
+        System.out.println(response.getCheckmessage());
     }
 
     public void shutdown() {
@@ -104,28 +106,28 @@ public class StubClient {
         StubClient client = new StubClient("localhost", 9090);
 
         // Save User Info
-        client.saveUserInfo(1, "user1", 550, "1999-07-16 21:57:15");
-        client.saveUserInfo(2, "user2", 220, "1945-07-16 19:45:35");
-        client.saveUserInfo(3, "user3", 600, "2000-12-07 15:19:41");
-        client.saveUserInfo(4, "user4", 210, "1873-07-16 11:23:14");
-        client.saveUserInfo(5, "user5", 520, "2000-03-07 15:35:24");
+        client.saveUserInfo(1, "user1", 55, "2024-10-16 21:57:15");
+        client.saveUserInfo(2, "user2", 22, "2024-09-10 19:45:35");
+        client.saveUserInfo(3, "user3", 60, "2024-09-07 15:19:41");
+        client.saveUserInfo(4, "user4", 21, "2024-08-23 11:23:14");
+        client.saveUserInfo(5, "user5", 52, "2024-03-07 15:35:24");
 
         // Save Game Progress
         client.saveMapProgress(1, 1, -40, -8, 0);
-        client.saveMapProgress(3, 0, -50, -9, 1);
+        client.saveMapProgress(2, 0, -50, -9, 1);
         // Save User Item
         client.saveItemRelation(1, "c100", 1);
         client.saveItemRelation(1, "c101", 2);
-        client.saveItemRelation(3, "c100", 1);
-        client.saveItemRelation(3, "c101", 1);
+        client.saveItemRelation(2, "c100", 1);
+        client.saveItemRelation(2, "c101", 1);
 
         // Get Info
         client.getUserInfo(1);
         client.getMapProgress(1);
         client.getItemRelation(1);
-        client.getUserInfo(3);
-        client.getMapProgress(3);
-        client.getItemRelation(3);
+        client.getUserInfo(2);
+        client.getMapProgress(2);
+        client.getItemRelation(2);
 
         client.shutdown();
     }
