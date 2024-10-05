@@ -104,21 +104,22 @@ public class StubClient {
         StubClient client = new StubClient("localhost", 9090);
 
         // Save User Info
-//        client.saveUserInfo(1, "gameservice", 550, "1999-07-16 21:57:15");
-//        client.saveUserInfo(2, "daewook", 220, "1945-07-16 19:45:35");
-//        client.saveUserInfo(3, "seungtae", 600, "2000-12-07 15:19:41");
-//        client.saveUserInfo(4, "junyeong", 210, "1873-07-16 11:23:14");
-//        client.saveUserInfo(5, "minguk", 520, "2000-03-07 15:35:24");
-//
-//        // Save Game Progress
-//        client.saveMapProgress(1, 1, -40, -8, 0);
-//        client.saveMapProgress(3, 0, -50, -9, 1);
-//        // Save User Item
-//        client.saveItemRelation(1, "c100", 1);
-//        client.saveItemRelation(1, "c101", 2);
-//        client.saveItemRelation(3, "c100", 1);
-//        client.saveItemRelation(3, "c101", 1);
+        client.saveUserInfo(1, "user1", 550, "1999-07-16 21:57:15");
+        client.saveUserInfo(2, "user2", 220, "1945-07-16 19:45:35");
+        client.saveUserInfo(3, "user3", 600, "2000-12-07 15:19:41");
+        client.saveUserInfo(4, "user4", 210, "1873-07-16 11:23:14");
+        client.saveUserInfo(5, "user5", 520, "2000-03-07 15:35:24");
 
+        // Save Game Progress
+        client.saveMapProgress(1, 1, -40, -8, 0);
+        client.saveMapProgress(3, 0, -50, -9, 1);
+        // Save User Item
+        client.saveItemRelation(1, "c100", 1);
+        client.saveItemRelation(1, "c101", 2);
+        client.saveItemRelation(3, "c100", 1);
+        client.saveItemRelation(3, "c101", 1);
+
+        // Get Info
         client.getUserInfo(1);
         client.getMapProgress(1);
         client.getItemRelation(1);
