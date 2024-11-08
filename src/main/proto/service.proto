@@ -4,45 +4,77 @@ option java_package = "gameservice";
 option java_outer_classname = "ServiceProto";
 
 service GameService {
-    rpc getMapProgress (MapProgressRequest) returns (MapProgressResponse);
-    rpc saveMapProgress (MapProgressRequest) returns (MapProgressResponse);
     rpc getUserInfo (UserInfoRequest) returns (UserInfoResponse);
     rpc saveUserInfo (UserInfoRequest) returns (UserInfoResponse);
-    rpc getItemRelation(ItemRelationRequest) returns (ItemRelationResponse);
-    rpc saveItemRelation(ItemRelationRequest) returns (ItemRelationResponse);
-}
-
-message MapProgressRequest {
-    int32 userid = 1;
-    int32 mapprogress = 2;
-    double xloc = 3;
-    double yloc = 4;
-    double zloc = 5;
-    string checkmessage = 6;
-}
-
-message MapProgressResponse {
-    int32 userid = 1;
-    int32 mapprogress = 2;
-    double xloc = 3;
-    double yloc = 4;
-    double zloc = 5;
-    string checkmessage = 6;
+    rpc getUserLocation (UserLocationRequest) returns (UserLocationResponse);
+    rpc saveUserLocation (UserLocationRequest) returns (UserLocationResponse);
+    rpc getSkillRelation (SkillRelationRequest) returns (SkillRelationResponse);
+    rpc saveSkillRelation (SkillRelationRequest) returns (SkillRelationResponse);
+    rpc getItemRelation (ItemRelationRequest) returns (ItemRelationResponse);
+    rpc saveItemRelation (ItemRelationRequest) returns (ItemRelationResponse);
 }
 
 message UserInfoRequest {
     int32 userid = 1;
     string nkname = 2;
-    int32 exp = 3;
-    string savetime = 4;
-    string checkmessage = 5;
+    int32 curexp = 3;
+    int32 maxexp = 4;
+    int32 userlevel = 5;
+    int32 curhp = 6;
+    int32 maxhp = 7;
+    int32 curmp = 8;
+    int32 maxmp = 9;
+    int32 attpower = 10;
+    int32 statpoint = 11;
+    int32 skillpoint = 12;
+    string checkmessage = 13;
 }
 
 message UserInfoResponse {
     int32 userid = 1;
     string nkname = 2;
-    int32 exp = 3;
-    string savetime = 4;
+    int32 curexp = 3;
+    int32 maxexp = 4;
+    int32 userlevel = 5;
+    int32 curhp = 6;
+    int32 maxhp = 7;
+    int32 curmp = 8;
+    int32 maxmp = 9;
+    int32 attpower = 10;
+    int32 statpoint = 11;
+    int32 skillpoint = 12;
+    string checkmessage = 13;
+}
+
+message UserLocationRequest {
+    int32 userid = 1;
+    float xloc = 2;
+    float yloc = 3;
+    float zloc = 4;
+    string checkmessage = 5;
+}
+
+message UserLocationResponse {
+    int32 userid = 1;
+    float xloc = 2;
+    float yloc = 3;
+    float zloc = 4;
+    string checkmessage = 5;
+}
+
+message SkillRelationRequest {
+    int32 userid = 1;
+    int32 skillid = 2;
+    string skillname = 3;
+    int32 skilllevel = 4;
+    string checkmessage = 5;
+}
+
+message SkillRelationResponse {
+    int32 userid = 1;
+    int32 skillid = 2;
+    string skillname = 3;
+    int32 skilllevel = 4;
     string checkmessage = 5;
 }
 
