@@ -27,7 +27,6 @@ message UserInfoRequest {
     int32 attpower = 10;
     int32 statpoint = 11;
     int32 skillpoint = 12;
-    string checkmessage = 13;
 }
 
 message UserInfoResponse {
@@ -43,7 +42,6 @@ message UserInfoResponse {
     int32 attpower = 10;
     int32 statpoint = 11;
     int32 skillpoint = 12;
-    string checkmessage = 13;
 }
 
 message UserLocationRequest {
@@ -51,7 +49,6 @@ message UserLocationRequest {
     float xloc = 2;
     float yloc = 3;
     float zloc = 4;
-    string checkmessage = 5;
 }
 
 message UserLocationResponse {
@@ -59,7 +56,6 @@ message UserLocationResponse {
     float xloc = 2;
     float yloc = 3;
     float zloc = 4;
-    string checkmessage = 5;
 }
 
 message SkillRelationRequest {
@@ -67,7 +63,6 @@ message SkillRelationRequest {
     int32 skillid = 2;
     string skillname = 3;
     int32 skilllevel = 4;
-    string checkmessage = 5;
 }
 
 message SkillRelationResponse {
@@ -75,7 +70,6 @@ message SkillRelationResponse {
     int32 skillid = 2;
     string skillname = 3;
     int32 skilllevel = 4;
-    string checkmessage = 5;
 }
 
 message ItemRelationRequest {
@@ -83,7 +77,6 @@ message ItemRelationRequest {
     string itemid = 2;
     string itemname = 3;
     int32 quantity = 4;
-    string checkmessage = 5;
 }
 
 message ItemRelationResponse {
@@ -91,5 +84,4 @@ message ItemRelationResponse {
     string itemid = 2;
     string itemname = 3;
     int32 quantity = 4;
-    string checkmessage = 5;
 }
