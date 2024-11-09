@@ -17,31 +17,31 @@ service GameService {
 message UserInfoRequest {
     int32 userid = 1;
     string nkname = 2;
-    int32 curexp = 3;
-    int32 maxexp = 4;
-    int32 userlevel = 5;
-    int32 curhp = 6;
-    int32 maxhp = 7;
-    int32 curmp = 8;
-    int32 maxmp = 9;
-    int32 attpower = 10;
-    int32 statpoint = 11;
-    int32 skillpoint = 12;
+    float curexp = 3;
+    float maxexp = 4;
+    float userlevel = 5;
+    float curhp = 6;
+    float maxhp = 7;
+    float curmp = 8;
+    float maxmp = 9;
+    float attpower = 10;
+    float statpoint = 11;
+    float skillpoint = 12;
 }
 
 message UserInfoResponse {
     int32 userid = 1;
     string nkname = 2;
-    int32 curexp = 3;
-    int32 maxexp = 4;
-    int32 userlevel = 5;
-    int32 curhp = 6;
-    int32 maxhp = 7;
-    int32 curmp = 8;
-    int32 maxmp = 9;
-    int32 attpower = 10;
-    int32 statpoint = 11;
-    int32 skillpoint = 12;
+    float curexp = 3;
+    float maxexp = 4;
+    float userlevel = 5;
+    float curhp = 6;
+    float maxhp = 7;
+    float curmp = 8;
+    float maxmp = 9;
+    float attpower = 10;
+    float statpoint = 11;
+    float skillpoint = 12;
 }
 
 message UserLocationRequest {
