@@ -33,16 +33,16 @@ public class StubServer extends GameServiceGrpc.GameServiceImplBase {
 
             if (resultSet.next()) {
                 String nkname = resultSet.getString("nkname");
-                int curexp = resultSet.getInt("curexp");
-                int maxexp = resultSet.getInt("maxexp");
-                int userlevel = resultSet.getInt("userlevel");
-                int curhp = resultSet.getInt("curhp");
-                int maxhp = resultSet.getInt("maxhp");
-                int curmp = resultSet.getInt("curmp");
-                int maxmp = resultSet.getInt("maxmp");
-                int attpower = resultSet.getInt("attpower");
-                int statpoint = resultSet.getInt("statpoint");
-                int skillpoint = resultSet.getInt("skillpoint");
+                float curexp = resultSet.getFloat("curexp");
+                float maxexp = resultSet.getFloat("maxexp");
+                float userlevel = resultSet.getFloat("userlevel");
+                float curhp = resultSet.getFloat("curhp");
+                float maxhp = resultSet.getFloat("maxhp");
+                float curmp = resultSet.getFloat("curmp");
+                float maxmp = resultSet.getFloat("maxmp");
+                float attpower = resultSet.getFloat("attpower");
+                float statpoint = resultSet.getFloat("statpoint");
+                float skillpoint = resultSet.getFloat("skillpoint");
 
                 UserInfoResponse response = UserInfoResponse.newBuilder()
                         .setUserid(userid)
@@ -57,12 +57,10 @@ public class StubServer extends GameServiceGrpc.GameServiceImplBase {
                         .setAttpower(attpower)
                         .setStatpoint(statpoint)
                         .setSkillpoint(skillpoint)
-                        .setCheckmessage("====== User info loaded successfully ======")
                         .build();
                 responseObserver.onNext(response);
             } else {
                 responseObserver.onNext(UserInfoResponse.newBuilder()
-                        .setCheckmessage("!!! User not found !!!")
                         .build());
             }
 
@@ -101,43 +99,41 @@ public class StubServer extends GameServiceGrpc.GameServiceImplBase {
                         if (recordExists) {
                             // Set parameters for the UPDATE statement
                             statement.setString(1, request.getNkname());
-                            statement.setInt(2, request.getCurexp());
-                            statement.setInt(3, request.getMaxexp());
-                            statement.setInt(4, request.getUserlevel());
-                            statement.setInt(5, request.getCurhp());
-                            statement.setInt(6, request.getMaxhp());
-                            statement.setInt(7, request.getCurmp());
-                            statement.setInt(8, request.getMaxmp());
-                            statement.setInt(9, request.getAttpower());
-                            statement.setInt(10, request.getStatpoint());
-                            statement.setInt(11, request.getSkillpoint());
-                            statement.setInt(12, request.getUserid());
+                            statement.setFloat(2, request.getCurexp());
+                            statement.setFloat(3, request.getMaxexp());
+                            statement.setFloat(4, request.getUserlevel());
+                            statement.setFloat(5, request.getCurhp());
+                            statement.setFloat(6, request.getMaxhp());
+                            statement.setFloat(7, request.getCurmp());
+                            statement.setFloat(8, request.getMaxmp());
+                            statement.setFloat(9, request.getAttpower());
+                            statement.setFloat(10, request.getStatpoint());
+                            statement.setFloat(11, request.getSkillpoint());
+                            statement.setFloat(12, request.getUserid());
                         } else {
                             // Set parameters for the INSERT statement
-                            statement.setInt(1, request.getUserid());
+                            statement.setFloat(1, request.getUserid());
                             statement.setString(2, request.getNkname());
-                            statement.setInt(3, request.getCurexp());
-                            statement.setInt(4, request.getMaxexp());
-                            statement.setInt(5, request.getUserlevel());
-                            statement.setInt(6, request.getCurhp());
-                            statement.setInt(7, request.getMaxhp());
-                            statement.setInt(8, request.getCurmp());
-                            statement.setInt(9, request.getMaxmp());
-                            statement.setInt(10, request.getAttpower());
-                            statement.setInt(11, request.getStatpoint());
-                            statement.setInt(12, request.getSkillpoint());
+                            statement.setFloat(3, request.getCurexp());
+                            statement.setFloat(4, request.getMaxexp());
+                            statement.setFloat(5, request.getUserlevel());
+                            statement.setFloat(6, request.getCurhp());
+                            statement.setFloat(7, request.getMaxhp());
+                            statement.setFloat(8, request.getCurmp());
+                            statement.setFloat(9, request.getMaxmp());
+                            statement.setFloat(10, request.getAttpower());
+                            statement.setFloat(11, request.getStatpoint());
+                            statement.setFloat(12, request.getSkillpoint());
                         }
 
                         // Execute the appropriate statement
                         int rowsAffected = statement.executeUpdate();
                         if (rowsAffected > 0) {
                             UserInfoResponse response = UserInfoResponse.newBuilder()
-                                    .setCheckmessage(recordExists ? "====== User info updated successfully ======" : "====== User info saved successfully ======")
                                     .build();
                             responseObserver.onNext(response);
                         } else {
                             responseObserver.onNext(UserInfoResponse.newBuilder()
-                                    .setCheckmessage("!!! Failed to save or update user info !!!")
                                     .build());
                         }
                     }
@@ -176,13 +172,11 @@ public class StubServer extends GameServiceGrpc.GameServiceImplBase {
                         .setXloc(xloc)
                         .setYloc(yloc)
                         .setZloc(zloc)
-                        .setCheckmessage("====== User loaction loaded successfully ======")
                         .build();
 
                 responseObserver.onNext(response);
             } else {
                 responseObserver.onNext(UserLocationResponse.newBuilder()
-                        .setCheckmessage("!!! Failed to load user location !!!")
                         .build());
             }
 
@@ -231,12 +225,10 @@ public class StubServer extends GameServiceGrpc.GameServiceImplBase {
                         int rowsAffected = statement.executeUpdate();
                         if (rowsAffected > 0) {
                             UserLocationResponse response = UserLocationResponse.newBuilder()
-                                    .setCheckmessage(recordExists ? "====== User location updated successfully ======" : "====== User location saved successfully ======")
                                     .build();
                             responseObserver.onNext(response);
                         } else {
                             responseObserver.onNext(UserLocationResponse.newBuilder()
-                                    .setCheckmessage("!!! Failed to save or update user location !!!")
                                     .build());
                         }
                     }
@@ -278,13 +270,11 @@ public class StubServer extends GameServiceGrpc.GameServiceImplBase {
                         .setSkillid(skillid)
                         .setSkillname(skillname)
                         .setSkilllevel(skilllevel)
-                        .setCheckmessage("====== Skill relation loaded ======")
                         .build();
 
                 responseObserver.onNext(response);
             } else {
                 responseObserver.onNext(SkillRelationResponse.newBuilder()
-                        .setCheckmessage("====== Skill relation not loaded ======")
                         .build());
             }
 
@@ -309,7 +299,6 @@ public class StubServer extends GameServiceGrpc.GameServiceImplBase {
                 statement.executeUpdate();
 
                 responseObserver.onNext(SkillRelationResponse.newBuilder()
-                        .setCheckmessage("====== Skill relation saved successfully ======")
                         .build());
             }
             responseObserver.onCompleted();
@@ -318,7 +307,6 @@ public class StubServer extends GameServiceGrpc.GameServiceImplBase {
             responseObserver.onError(e);
         }
     }
-
 
     @Override
     public void getItemRelation(ItemRelationRequest request, StreamObserver<ItemRelationResponse> responseObserver) {
@@ -346,13 +334,11 @@ public class StubServer extends GameServiceGrpc.GameServiceImplBase {
                         .setItemid(itemid)
                         .setItemname(itemname)
                         .setQuantity(quantity)
-                        .setCheckmessage("====== Item relation loaded ======")
                         .build();
 
                 responseObserver.onNext(response);
             } else {
                 responseObserver.onNext(ItemRelationResponse.newBuilder()
-                        .setCheckmessage("====== Item relation not loaded ======")
                         .build());
             }
 
@@ -378,7 +364,6 @@ public class StubServer extends GameServiceGrpc.GameServiceImplBase {
                 statement.executeUpdate();
 
                 responseObserver.onNext(ItemRelationResponse.newBuilder()
-                        .setCheckmessage("====== Item relation saved successfully ======")
                         .build());
             }
             responseObserver.onCompleted();
