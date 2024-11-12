@@ -10,9 +10,9 @@ public class StartServer {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         String host = "Local IPv4";
-        int port = 9090;
+        int port = Port num;
 
-        Server server = ServerBuilder.forPort(9090)
+        Server server = ServerBuilder.forPort(port)
                 .addService(new StubServer())
                 .build();
 
